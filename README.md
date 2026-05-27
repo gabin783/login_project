@@ -62,6 +62,7 @@ flowchart LR
 - [개발 계획서](docs/development-plan.md)
 - [백엔드 구현 계획](docs/backend-implementation-plan.md)
 - [AI 서버 구현 계획](docs/ai-server-plan.md)
+- [Spring Boot - Flask 서버 연동 구현 계획](docs/spring-flask-integration-plan.md)
 
 ## 화면캡쳐
 
