@@ -36,6 +36,11 @@ public class MemberService {
         return memberRepository.findAll();
     }
 
+    public Member findByUsername(String username) {
+        return memberRepository.findByUsername(username)
+                .orElseThrow(() -> new IllegalArgumentException("회원을 찾을 수 없습니다."));
+    }
+
     private void validateDuplicateUsername(String username) {
         if (memberRepository.existsByUsername(username)) {
             throw new IllegalArgumentException("이미 사용 중인 아이디입니다.");
