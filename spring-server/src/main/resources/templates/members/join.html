@@ -1,56 +1,55 @@
 <!doctype html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>회원가입</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
+<head th:replace="~{fragments/layout :: head('회원가입')}"></head>
 <body>
-<nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom">
+<nav th:replace="~{fragments/layout :: navbar}"></nav>
+
+<main class="page-shell">
     <div class="container">
-        <a class="navbar-brand fw-semibold" href="/">비만 예측 서비스</a>
-    </div>
-</nav>
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-5">
+                <div class="app-card bg-white p-4 p-md-5">
+                    <span class="feature-label mb-3">계정 생성</span>
+                    <h1 class="h3 fw-bold mb-2">회원가입</h1>
+                    <p class="text-muted-strong mb-4">아이디, 비밀번호, 이름을 입력해 계정을 생성합니다.</p>
 
-<main class="container py-5">
-    <div class="row justify-content-center">
-        <div class="col-md-7 col-lg-5">
-            <h1 class="h4 mb-4">회원가입</h1>
+                    <form th:action="@{/members/join}" th:object="${memberJoinRequest}" method="post" class="vstack gap-3">
+                        <div th:if="${#fields.hasGlobalErrors()}" class="alert alert-danger" role="alert">
+                            <p class="mb-0" th:each="error : ${#fields.globalErrors()}" th:text="${error}">가입 오류</p>
+                        </div>
 
-            <form th:action="@{/members/join}" th:object="${memberJoinRequest}" method="post" class="vstack gap-3">
-                <div th:if="${#fields.hasGlobalErrors()}" class="alert alert-danger" role="alert">
-                    <p class="mb-0" th:each="error : ${#fields.globalErrors()}" th:text="${error}">가입 오류</p>
+                        <div>
+                            <label for="username" class="form-label fw-semibold">아이디</label>
+                            <input type="text" id="username" th:field="*{username}" class="form-control form-control-lg"
+                                   th:classappend="${#fields.hasErrors('username')} ? 'is-invalid'">
+                            <div class="invalid-feedback" th:errors="*{username}">아이디 오류</div>
+                        </div>
+
+                        <div>
+                            <label for="password" class="form-label fw-semibold">비밀번호</label>
+                            <input type="password" id="password" th:field="*{password}" class="form-control form-control-lg"
+                                   th:classappend="${#fields.hasErrors('password')} ? 'is-invalid'">
+                            <div class="invalid-feedback" th:errors="*{password}">비밀번호 오류</div>
+                        </div>
+
+                        <div>
+                            <label for="name" class="form-label fw-semibold">이름</label>
+                            <input type="text" id="name" th:field="*{name}" class="form-control form-control-lg"
+                                   th:classappend="${#fields.hasErrors('name')} ? 'is-invalid'">
+                            <div class="invalid-feedback" th:errors="*{name}">이름 오류</div>
+                        </div>
+
+                        <div class="d-flex gap-2 pt-2 responsive-actions">
+                            <button type="submit" class="btn btn-primary btn-lg">가입하기</button>
+                            <a th:href="@{/}" class="btn btn-outline-secondary btn-lg">취소</a>
+                        </div>
+                    </form>
                 </div>
-
-                <div>
-                    <label for="username" class="form-label">아이디</label>
-                    <input type="text" id="username" th:field="*{username}" class="form-control"
-                           th:classappend="${#fields.hasErrors('username')} ? 'is-invalid'">
-                    <div class="invalid-feedback" th:errors="*{username}">아이디 오류</div>
-                </div>
-
-                <div>
-                    <label for="password" class="form-label">비밀번호</label>
-                    <input type="password" id="password" th:field="*{password}" class="form-control"
-                           th:classappend="${#fields.hasErrors('password')} ? 'is-invalid'">
-                    <div class="invalid-feedback" th:errors="*{password}">비밀번호 오류</div>
-                </div>
-
-                <div>
-                    <label for="name" class="form-label">이름</label>
-                    <input type="text" id="name" th:field="*{name}" class="form-control"
-                           th:classappend="${#fields.hasErrors('name')} ? 'is-invalid'">
-                    <div class="invalid-feedback" th:errors="*{name}">이름 오류</div>
-                </div>
-
-                <div class="d-flex gap-2 pt-2">
-                    <button type="submit" class="btn btn-primary">가입하기</button>
-                    <a href="/" class="btn btn-outline-secondary">취소</a>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
 </main>
+
+<th:block th:replace="~{fragments/layout :: scripts}"></th:block>
 </body>
 </html>

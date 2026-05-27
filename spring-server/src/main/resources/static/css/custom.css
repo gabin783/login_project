@@ -1,0 +1,121 @@
+:root {
+    --app-blue: #2563eb;
+    --app-blue-dark: #1e40af;
+    --app-ink: #172033;
+    --app-muted: #667085;
+    --app-border: #dbe4f0;
+    --app-surface: #f6f9fc;
+}
+
+body {
+    min-height: 100vh;
+    color: var(--app-ink);
+    background: var(--app-surface);
+}
+
+.navbar {
+    box-shadow: 0 1px 8px rgba(15, 23, 42, 0.04);
+}
+
+.page-shell {
+    padding-top: 3rem;
+    padding-bottom: 4rem;
+}
+
+.hero-section {
+    padding: 4rem 0 3rem;
+}
+
+.hero-copy {
+    max-width: 720px;
+}
+
+.section-title {
+    letter-spacing: 0;
+}
+
+.app-card {
+    border: 1px solid var(--app-border);
+    border-radius: 8px;
+    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06);
+}
+
+.feature-card {
+    height: 100%;
+    border: 1px solid var(--app-border);
+    border-radius: 8px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(37, 99, 235, 0.12);
+}
+
+.feature-label {
+    display: inline-flex;
+    align-items: center;
+    min-height: 32px;
+    padding: 0 0.75rem;
+    border-radius: 999px;
+    color: var(--app-blue-dark);
+    background: #eaf1ff;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.form-panel {
+    max-width: 560px;
+}
+
+.table-card {
+    overflow: hidden;
+    border: 1px solid var(--app-border);
+    border-radius: 8px;
+    background: #fff;
+}
+
+.question-content {
+    min-height: 220px;
+    white-space: pre-wrap;
+}
+
+.btn {
+    border-radius: 6px;
+}
+
+.btn-primary {
+    background-color: var(--app-blue);
+    border-color: var(--app-blue);
+}
+
+.btn-primary:hover {
+    background-color: var(--app-blue-dark);
+    border-color: var(--app-blue-dark);
+}
+
+.text-muted-strong {
+    color: var(--app-muted);
+}
+
+@media (max-width: 575.98px) {
+    .page-shell {
+        padding-top: 2rem;
+        padding-bottom: 3rem;
+    }
+
+    .hero-section {
+        padding: 2.75rem 0 2rem;
+    }
+
+    .responsive-actions {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .responsive-actions .btn,
+    .responsive-actions form,
+    .responsive-actions form .btn {
+        width: 100%;
+    }
+}
